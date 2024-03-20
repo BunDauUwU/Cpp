@@ -12,14 +12,15 @@ using namespace std;
 //**Variable**//
 int n, m;
 int A[501][501];
-int ans[501][501];
-int len[501][501];
-pair<int,int> D[] = {{1,0},{0,1}};
+int time[501][501];
+pair<int,int> d[] = {{0,1},{1,0}};
 //**Struct**//
-
+struct block{
+    int val, len;
+}B[501][501];
 //**Function**//
 bool check(int x, int y){
-	return (x > 0 && x <= n && y > 0 && y <= m && A[x][y] != 2);
+    return (x > 0 && y > 0 && x <= n && y <= m);
 }
 int main()
 {
@@ -29,29 +30,26 @@ int main()
     freopen(FILE".out","w",stdout);
     cin >> n >> m;
     for(int i = 1; i<=n; i++){
-    	for(int j = 1; j<=m; j++){
-    		cin >> A[i][j];
-    	}
+        for(int j = 1; j<=m; j++){
+            cin >> A[i][j];
+        }
     }
     queue<pair<int,int>> q;
-    queue<pair<int,int>> q2;
     q.push({1,1});
-    ans[1][1] = A[1][1];
-    len[1][1] = 1;
-    	while(q.size()){
-    		auto it = q.front();q.pop();
-    		int x = it.fi; 
-    		int y = it.se;
-    		for(int i = 0; i<2; i++){
-    			int u = x + D[i].fi;
-    			int v = y + D[i].se;
-    			if(check(u,v)){
-    			}
-    		}
-    	}
-    while(ans[n][m]){
-    	cout<<ans[n][m]%2;
-    	ans[n][m]/=2;
+    time[1][1] = 1; 
+    while(q.size()){
+        auto it = q.top(); q.pop();
+        int x = it.fi;
+        int y = it.se;
+        for(int i = 0; i<2; i++){
+            int u = x + d[i].if;
+            int v = y + d[i].se;
+            if(check[u][v]){
+                time[u][v] = time[x][y] + 1;
+                q.push({u,v});
+            }
+        }
     }
+    
     return 0;
 }
