@@ -5,12 +5,14 @@
 #define fi first
 #define se second
 //#define cout cerr
-#define FILE "P" 
+#define FILE "NDOU" 
 template <class T> bool ckmin(T &a, const T &b) {return (a > b ? a = b, true : false); };
 template <class T> bool ckmax(T &a, const T &b) {return (a < b ? a = b, true : false); };
 using namespace std;
 //**Variable**//
-
+string s;
+int ans = 0;
+int n;
 //**Struct**//
 
 //**Function**//
@@ -21,7 +23,10 @@ int main()
     // freopen(FILE".inp","w",stdout);
     freopen(FILE".inp","r",stdin);
     freopen(FILE".out","w",stdout);
-    
-    
+    cin >> s;
+    n = s.size();
+    s = ' ' + s;
+
+    cout << ans;
     return 0;
 }
